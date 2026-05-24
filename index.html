@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Presso. — Your AI News Briefing</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #eeeae5;
+      --card-light: #f8f6f2;
+      --yellow: #ffc244;
+      --orange: #ff8a24;
+      --black: #181818;
+      --muted: #817b74;
+      --white: #ffffff;
+      --radius-card: 24px;
+      --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--black);
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── NAV: edge-aligned minimal — no surface, no sticky, no blur ─── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 36px 56px 0;
+    }
+
+    .nav-logo {
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: -2px;
+      color: var(--black);
+      text-decoration: none;
+    }
+
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+
+    .nav-links a {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--black); }
+
+    /* ─── HERO ─── */
+    .hero-wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 72px 56px 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .hero-left { display: flex; flex-direction: column; gap: 28px; }
+
+    .hero-h1 {
+      font-size: 68px;
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1.03;
+      color: var(--black);
+    }
+
+    .hero-h1 .accent { color: var(--orange); }
+
+    .hero-sub {
+      font-size: 18px;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 430px;
+      font-weight: 400;
+    }
+
+    /* ─── HERO CARD ─── */
+    .hero-card {
+      background: var(--yellow);
+      border-radius: var(--radius-card);
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      box-shadow: 0 20px 60px rgba(255,194,68,0.28), 0 4px 16px rgba(0,0,0,0.06);
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .hero-card-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(24,24,24,0.55);
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+    }
+
+    .hero-card-date {
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(24,24,24,0.45);
+    }
+
+    .week-cal {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+    }
+
+    .day { display: flex; flex-direction: column; align-items: center; gap: 7px; }
+
+    .day-lbl {
+      font-size: 10px;
+      font-weight: 700;
+      color: rgba(24,24,24,0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .day-num {
+      width: 38px;
+      height: 38px;
+      border-radius: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 700;
+      color: rgba(24,24,24,0.45);
+      background: rgba(255,255,255,0.3);
+    }
+
+    .day.today .day-num { background: var(--black); color: var(--yellow); }
+    .day.past .day-num { background: rgba(255,255,255,0.15); color: rgba(24,24,24,0.3); }
+
+    .briefing-box {
+      background: rgba(255,255,255,0.48);
+      border-radius: 18px;
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .briefing-lbl {
+      font-size: 11px;
+      font-weight: 700;
+      color: rgba(24,24,24,0.45);
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+    }
+
+    .briefing-hl {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--black);
+      letter-spacing: -0.4px;
+      line-height: 1.35;
+    }
+
+    .topic-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .chip {
+      background: rgba(255,255,255,0.5);
+      color: var(--black);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 100px;
+      transition: background-color 0.18s;
+    }
+
+    .chip.on { background: var(--black); color: var(--yellow); }
+
+    /* ─── HOW IT WORKS: typographic step list ─── */
+    #how {
+      background: var(--card-light);
+      padding: 64px 56px 80px;
+    }
+
+    .how-inner { max-width: 1180px; margin: 0 auto; }
+
+    .how-inner > h2 {
+      font-size: 48px;
+      font-weight: 900;
+      letter-spacing: -2px;
+      color: var(--black);
+      margin-bottom: 56px;
+      line-height: 1.08;
+    }
+
+    .steps { display: flex; flex-direction: column; }
+
+    .step {
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      gap: 48px;
+      padding: 36px 0;
+      border-top: 1px solid rgba(24,24,24,0.1);
+      align-items: start;
+    }
+
+    .step:last-child { border-bottom: 1px solid rgba(24,24,24,0.1); }
+
+    .step-ord {
+      font-size: 64px;
+      font-weight: 900;
+      letter-spacing: -4px;
+      color: rgba(24,24,24,0.1);
+      line-height: 1;
+      user-select: none;
+      transition: color 0.2s;
+    }
+
+    .step:hover .step-ord { color: var(--orange); }
+
+    .step-body { display: flex; flex-direction: column; gap: 10px; padding-top: 8px; }
+
+    .step-title {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.6px;
+      color: var(--black);
+    }
+
+    .step-desc {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 540px;
+    }
+
+    /* ─── TOPICS ─── */
+    #topics { background: var(--bg); padding: 80px 56px 108px; }
+
+    .topics-inner { max-width: 1180px; margin: 0 auto; }
+
+    .topics-inner > h2 {
+      font-size: 48px;
+      font-weight: 900;
+      letter-spacing: -2px;
+      color: var(--black);
+      margin-bottom: 44px;
+      line-height: 1.08;
+    }
+
+    .tgrid { display: flex; flex-wrap: wrap; gap: 10px; }
+
+    .tchip {
+      background: var(--card-light);
+      color: var(--black);
+      font-size: 15px;
+      font-weight: 600;
+      padding: 13px 22px;
+      border-radius: 100px;
+      border: 2px solid transparent;
+      transition: background-color 0.18s, border-color 0.18s, color 0.18s;
+      letter-spacing: -0.1px;
+    }
+
+    .tchip:hover { border-color: var(--orange); background: var(--white); }
+    .tchip.feat { background: var(--yellow); }
+    .tchip.feat:hover { background: var(--orange); color: var(--white); border-color: transparent; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid rgba(24,24,24,0.08);
+      padding: 32px 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-logo {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -2px;
+      color: var(--black);
+      text-decoration: none;
+    }
+
+    .footer-links { display: flex; gap: 28px; list-style: none; }
+
+    .footer-links a {
+      font-size: 14px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--black); }
+    .footer-copy { font-size: 13px; color: var(--muted); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Presso.</a>
+    <ul class="nav-links">
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#topics">Topics</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero-wrap">
+    <div class="hero-left">
+      <h1 class="hero-h1">
+        News that<br>
+        actually<br>
+        <span class="accent">matters.</span>
+      </h1>
+      <p class="hero-sub">
+        Presso reads sources across the web every morning and delivers a focused briefing — as audio or text, tailored to what you follow.
+      </p>
+    </div>
+
+    <div class="hero-card">
+      <div class="hero-card-header">
+        <span class="hero-card-label">Your Briefing</span>
+        <span class="hero-card-date">Week 21 · 2026</span>
+      </div>
+      <div class="week-cal">
+        <div class="day past"><span class="day-lbl">Mon</span><span class="day-num">18</span></div>
+        <div class="day past"><span class="day-lbl">Tue</span><span class="day-num">19</span></div>
+        <div class="day past"><span class="day-lbl">Wed</span><span class="day-num">20</span></div>
+        <div class="day past"><span class="day-lbl">Thu</span><span class="day-num">21</span></div>
+        <div class="day past"><span class="day-lbl">Fri</span><span class="day-num">22</span></div>
+        <div class="day today"><span class="day-lbl">Sat</span><span class="day-num">23</span></div>
+        <div class="day"><span class="day-lbl">Sun</span><span class="day-num">24</span></div>
+      </div>
+      <div class="briefing-box">
+        <span class="briefing-lbl">Top Story Today</span>
+        <p class="briefing-hl">ECB cuts key interest rate to 2.25% — what it means for savers and borrowers</p>
+      </div>
+      <div class="topic-chips">
+        <span class="chip on">Economy</span>
+        <span class="chip">Politics</span>
+        <span class="chip">Tech</span>
+        <span class="chip">Science</span>
+        <span class="chip">Sports</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <section id="how">
+    <div class="how-inner">
+      <h2>3 steps to your<br>perfect briefing</h2>
+      <div class="steps">
+        <div class="step">
+          <span class="step-ord">01</span>
+          <div class="step-body">
+            <h3 class="step-title">Pick your topics</h3>
+            <p class="step-desc">Tell Presso what you care about. Economy, tech, politics or science — fully customizable and adjustable at any time.</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-ord">02</span>
+          <div class="step-body">
+            <h3 class="step-title">Presso analyzes</h3>
+            <p class="step-desc">The AI reads sources across the web, evaluates relevance and quality, and distills the most important stories for your profile.</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-ord">03</span>
+          <div class="step-body">
+            <h3 class="step-title">Receive your briefing</h3>
+            <p class="step-desc">Every morning at 7 your personal briefing arrives — as a 5-minute audio or a compact text summary, whichever you prefer.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOPICS -->
+  <section id="topics">
+    <div class="topics-inner">
+      <h2>Everything that<br>matters to you</h2>
+      <div class="tgrid">
+        <span class="tchip feat">🌍 World Politics</span>
+        <span class="tchip feat">💹 Economy</span>
+        <span class="tchip">🤖 Artificial Intelligence</span>
+        <span class="tchip">📱 Tech &amp; Startups</span>
+        <span class="tchip">🔬 Science</span>
+        <span class="tchip">🌱 Climate</span>
+        <span class="tchip">⚽ Sports</span>
+        <span class="tchip">🏥 Health</span>
+        <span class="tchip">🎬 Culture &amp; Entertainment</span>
+        <span class="tchip">🏛️ Law &amp; Society</span>
+        <span class="tchip">🚀 Space</span>
+        <span class="tchip">🏦 Financial Markets</span>
+        <span class="tchip">🌐 EU &amp; Europe</span>
+        <span class="tchip">💡 Innovation</span>
+        <span class="tchip">🏙️ Urban Development</span>
+        <span class="tchip">🔒 Cybersecurity</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="#" class="footer-logo">Presso.</a>
+    <ul class="footer-links">
+      <li><a href="privacy.html">Privacy Policy</a></li>
+      <li><a href="imprint.html">Imprint</a></li>
+    </ul>
+    <span class="footer-copy">© 2026 Presso — made with ☕</span>
+  </footer>
+
+</body>
+</html>
