@@ -16,15 +16,15 @@
     }
 
     :root {
-      --bg: #eeeae5;
-      --card-light: #f8f6f2;
-      --yellow: #ffc244;
+      --bg: #f3f0eb;
+      --surface: #ffffff;
+      --hairline: rgba(24, 24, 24, 0.1);
       --orange: #ff8a24;
-      --black: #181818;
+      --ink: #181818;
+      --body: #494640;
       --muted: #817b74;
-      --white: #ffffff;
-      --radius-card: 24px;
-      --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+      --muted-2: #9a948d;
+      --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
     }
 
     html {
@@ -34,69 +34,68 @@
     body {
       font-family: var(--font);
       background: var(--bg);
-      color: var(--black);
+      color: var(--ink);
       min-height: 100vh;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
-    /* ─── NAV: edge-aligned minimal — no surface, no sticky, no blur ─── */
+    /* ─── NAV ─── */
     nav {
+      max-width: 1020px;
+      margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 36px 56px 0;
+      padding: 22px 24px;
     }
 
     .nav-logo {
-      font-size: 28px;
-      font-weight: 900;
-      letter-spacing: -2px;
-      color: var(--black);
+      font-size: 21px;
+      font-weight: 500;
+      letter-spacing: -0.3px;
+      color: var(--orange);
       text-decoration: none;
     }
 
     .nav-links {
       display: flex;
-      gap: 36px;
+      gap: 32px;
       list-style: none;
     }
 
     .nav-links a {
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--muted);
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: -0.1px;
+      color: var(--body);
       text-decoration: none;
       transition: color 0.2s;
     }
 
     .nav-links a:hover {
-      color: var(--black);
+      color: var(--ink);
     }
 
     /* ─── HERO ─── */
-    .hero-wrap {
-      max-width: 1180px;
+    .hero {
+      max-width: 1020px;
       margin: 0 auto;
-      padding: 72px 56px 80px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 72px;
-      align-items: center;
-    }
-
-    .hero-left {
+      padding: 96px 24px 0;
       display: flex;
       flex-direction: column;
-      gap: 28px;
+      align-items: center;
+      text-align: center;
     }
 
     .hero-h1 {
-      font-size: 68px;
-      font-weight: 900;
-      letter-spacing: -2px;
-      line-height: 1.03;
-      color: var(--black);
+      font-size: 64px;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      line-height: 1.06;
+      color: var(--ink);
+      max-width: 640px;
     }
 
     .hero-h1 .accent {
@@ -104,475 +103,567 @@
     }
 
     .hero-sub {
-      font-size: 18px;
-      color: var(--muted);
-      line-height: 1.65;
-      max-width: 430px;
+      font-size: 21px;
       font-weight: 400;
+      letter-spacing: -0.01em;
+      color: var(--muted);
+      line-height: 1.5;
+      max-width: 560px;
+      margin-top: 22px;
     }
 
-    /* ─── HERO CARD ─── */
-    .hero-card {
-      background: var(--yellow);
-      border-radius: var(--radius-card);
-      padding: 30px;
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      margin-top: 34px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 44px;
+      padding: 0 22px;
+      background: var(--orange);
+      border-radius: 22px;
+      color: var(--ink);
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: -0.1px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .btn:hover {
+      opacity: 0.85;
+    }
+
+    .link-more {
+      font-size: 15px;
+      font-weight: 400;
+      letter-spacing: -0.1px;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .link-more::after {
+      content: " ›";
+      color: var(--orange);
+    }
+
+    .link-more:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* ─── PHONE MOCKUP ─── */
+    .hero-visual {
+      padding: 84px 24px 110px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .phone {
+      width: 100%;
+      max-width: 360px;
+      background: var(--bg);
+      border: 9px solid #fdfcfa;
+      border-radius: 52px;
+      box-shadow: 0 40px 90px rgba(24, 24, 24, 0.1), 0 2px 8px rgba(24, 24, 24, 0.04);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .screen {
       display: flex;
       flex-direction: column;
       gap: 22px;
-      box-shadow: 0 20px 60px rgba(255, 194, 68, 0.28), 0 4px 16px rgba(0, 0, 0, 0.06);
+      padding: 30px 22px 118px;
     }
 
-    .hero-card-header {
+    .app-header {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
+      gap: 12px;
     }
 
-    .hero-card-label {
-      font-size: 12px;
-      font-weight: 700;
-      color: rgba(24, 24, 24, 0.55);
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
+    .app-greeting {
+      font-size: 29px;
+      font-weight: 400;
+      letter-spacing: 0;
+      color: var(--ink);
     }
 
-    .hero-card-date {
-      font-size: 12px;
-      font-weight: 600;
-      color: rgba(24, 24, 24, 0.45);
+    .app-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .icon-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 20px;
+      background: rgba(24, 24, 24, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .icon-btn svg {
+      width: 17px;
+      height: 17px;
+      stroke: var(--ink);
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 20px;
+      background: var(--orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 900;
     }
 
     .week-cal {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 4px;
+      display: flex;
+      justify-content: space-between;
     }
 
     .day {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 7px;
+      gap: 10px;
+      width: 40px;
     }
 
     .day-lbl {
-      font-size: 10px;
-      font-weight: 700;
-      color: rgba(24, 24, 24, 0.4);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink);
     }
 
     .day-num {
       width: 38px;
       height: 38px;
-      border-radius: 13px;
+      border-radius: 19px;
+      border: 2px solid transparent;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 15px;
-      font-weight: 700;
-      color: rgba(24, 24, 24, 0.45);
-      background: rgba(255, 255, 255, 0.3);
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--ink);
+      background: var(--surface);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
     }
 
     .day.today .day-num {
-      background: var(--black);
-      color: var(--yellow);
+      border-color: var(--ink);
     }
 
-    .day.past .day-num {
-      background: rgba(255, 255, 255, 0.15);
-      color: rgba(24, 24, 24, 0.3);
+    .day.future .day-lbl {
+      color: #aaa49d;
     }
 
-    .briefing-box {
-      background: rgba(255, 255, 255, 0.48);
-      border-radius: 18px;
-      padding: 18px 20px;
+    .day.future .day-num {
+      background: #e5dfd8;
+      color: #aaa49d;
+      box-shadow: none;
+    }
+
+    .section-date {
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--orange);
+      border-bottom: 1px solid #e0d8ce;
+      padding-bottom: 12px;
+    }
+
+    .written {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 18px;
     }
 
-    .briefing-lbl {
-      font-size: 11px;
-      font-weight: 700;
-      color: rgba(24, 24, 24, 0.45);
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
+    .written p {
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 1.65;
+      text-align: justify;
+      color: #111111;
     }
 
-    .briefing-hl {
-      font-size: 16px;
-      font-weight: 800;
-      color: var(--black);
-      letter-spacing: -0.4px;
-      line-height: 1.35;
+    .written p.dimmed {
+      color: #bdb6ac;
     }
 
-    .topic-chips {
+    .player-bar {
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 14px;
+      background: #faf8f4;
+      border-radius: 28px;
+      padding: 14px 20px 12px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+    }
+
+    .progress-track {
+      height: 4px;
+      border-radius: 3px;
+      background: rgba(24, 24, 24, 0.14);
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 38%;
+      border-radius: 3px;
+      background: var(--orange);
+    }
+
+    .player-copy {
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
+      gap: 2px;
+      margin-bottom: 8px;
+    }
+
+    .player-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    .player-time {
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(24, 24, 24, 0.55);
+    }
+
+    .player-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       gap: 8px;
     }
 
-    .chip {
-      background: rgba(255, 255, 255, 0.5);
-      color: var(--black);
-      font-size: 13px;
-      font-weight: 600;
-      padding: 6px 14px;
-      border-radius: 100px;
-      transition: background-color 0.18s;
+    .ctl {
+      height: 46px;
+      min-width: 54px;
+      border-radius: 23px;
+      background: rgba(24, 24, 24, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .chip.on {
-      background: var(--black);
-      color: var(--yellow);
+    .ctl svg {
+      width: 19px;
+      height: 19px;
+      fill: var(--ink);
     }
 
-    /* ─── HOW IT WORKS: typographic step list ─── */
+    .ctl-play {
+      width: 58px;
+      height: 58px;
+      min-width: 58px;
+      border-radius: 29px;
+      background: var(--orange);
+    }
+
+    .ctl-play svg {
+      width: 21px;
+      height: 21px;
+      fill: var(--ink);
+    }
+
+    /* ─── HOW IT WORKS ─── */
     #how {
-      background: var(--card-light);
-      padding: 64px 56px 80px;
+      background: var(--surface);
+      padding: 110px 24px 120px;
     }
 
     .how-inner {
-      max-width: 1180px;
+      max-width: 1020px;
       margin: 0 auto;
     }
 
-    .how-inner>h2 {
-      font-size: 48px;
-      font-weight: 900;
-      letter-spacing: -2px;
-      color: var(--black);
-      margin-bottom: 56px;
-      line-height: 1.08;
+    .section-kicker {
+      display: block;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: -0.1px;
+      color: var(--orange);
+      margin-bottom: 12px;
+    }
+
+    .how-inner h2,
+    .topics-inner h2 {
+      font-size: 44px;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      line-height: 1.1;
+      color: var(--ink);
+      max-width: 520px;
     }
 
     .steps {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+      margin-top: 72px;
     }
 
     .step {
-      display: grid;
-      grid-template-columns: 96px 1fr;
-      gap: 48px;
-      padding: 36px 0;
-      border-top: 1px solid rgba(24, 24, 24, 0.1);
-      align-items: start;
-    }
-
-    .step:last-child {
-      border-bottom: 1px solid rgba(24, 24, 24, 0.1);
+      border-top: 1px solid var(--hairline);
+      padding-top: 24px;
     }
 
     .step-ord {
-      font-size: 64px;
-      font-weight: 900;
-      letter-spacing: -4px;
-      color: rgba(24, 24, 24, 0.1);
-      line-height: 1;
-      user-select: none;
-      transition: color 0.2s;
-    }
-
-    .step:hover .step-ord {
-      color: var(--orange);
-    }
-
-    .step-body {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      padding-top: 8px;
+      display: block;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--muted-2);
+      font-variant-numeric: tabular-nums;
     }
 
     .step-title {
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: -0.6px;
-      color: var(--black);
+      font-size: 21px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-top: 28px;
     }
 
     .step-desc {
       font-size: 15px;
+      font-weight: 400;
+      letter-spacing: -0.1px;
       color: var(--muted);
-      line-height: 1.65;
-      max-width: 540px;
+      line-height: 1.55;
+      margin-top: 10px;
     }
 
     /* ─── TOPICS ─── */
     #topics {
-      background: var(--bg);
-      padding: 80px 56px 108px;
+      padding: 110px 24px 130px;
     }
 
     .topics-inner {
-      max-width: 1180px;
+      max-width: 1020px;
       margin: 0 auto;
-    }
-
-    .topics-inner>h2 {
-      font-size: 48px;
-      font-weight: 900;
-      letter-spacing: -2px;
-      color: var(--black);
-      margin-bottom: 44px;
-      line-height: 1.08;
     }
 
     .tgrid {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 12px;
+      margin-top: 56px;
+      max-width: 720px;
     }
 
     .tchip {
-      background: var(--card-light);
-      color: var(--black);
+      display: inline-flex;
+      align-items: center;
+      height: 44px;
+      padding: 0 20px;
+      background: transparent;
+      border: 1px solid rgba(24, 24, 24, 0.16);
+      border-radius: 22px;
+      color: var(--body);
       font-size: 15px;
-      font-weight: 600;
-      padding: 13px 22px;
-      border-radius: 100px;
-      border: 2px solid transparent;
-      transition: background-color 0.18s, border-color 0.18s, color 0.18s;
+      font-weight: 400;
       letter-spacing: -0.1px;
+      transition: border-color 0.2s, color 0.2s;
     }
 
     .tchip:hover {
-      border-color: var(--orange);
-      background: var(--white);
+      border-color: var(--ink);
+      color: var(--ink);
     }
 
-    .tchip.feat {
-      background: var(--yellow);
-    }
-
-    .tchip.feat:hover {
-      background: var(--orange);
-      color: var(--white);
-      border-color: transparent;
+    .topics-note {
+      font-size: 15px;
+      font-weight: 400;
+      letter-spacing: -0.1px;
+      color: var(--muted);
+      margin-top: 32px;
     }
 
     /* ─── FOOTER ─── */
     footer {
-      border-top: 1px solid rgba(24, 24, 24, 0.08);
-      padding: 32px 56px;
+      border-top: 1px solid var(--hairline);
+    }
+
+    .footer-inner {
+      max-width: 1020px;
+      margin: 0 auto;
+      padding: 22px 24px 40px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
+      gap: 20px;
       flex-wrap: wrap;
     }
 
-    .footer-logo {
-      font-size: 22px;
-      font-weight: 900;
-      letter-spacing: -2px;
-      color: var(--black);
-      text-decoration: none;
+    .footer-copy {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--muted-2);
     }
 
     .footer-links {
       display: flex;
-      gap: 28px;
+      gap: 24px;
       list-style: none;
     }
 
     .footer-links a {
-      font-size: 14px;
+      font-size: 12px;
+      font-weight: 400;
       color: var(--muted);
       text-decoration: none;
       transition: color 0.2s;
     }
 
     .footer-links a:hover {
-      color: var(--black);
-    }
-
-    .footer-copy {
-      font-size: 13px;
-      color: var(--muted);
+      color: var(--ink);
     }
 
     @media (max-width: 860px) {
-      nav {
-        padding: 26px 28px 0;
-      }
-
-      .nav-links {
-        gap: 20px;
-      }
-
-      .hero-wrap {
-        grid-template-columns: 1fr;
-        gap: 40px;
-        padding: 56px 28px 64px;
+      .hero {
+        padding-top: 72px;
       }
 
       .hero-h1 {
-        font-size: 52px;
-        max-width: 520px;
+        font-size: 48px;
       }
 
       .hero-sub {
-        font-size: 17px;
+        font-size: 19px;
+      }
+
+      .hero-visual {
+        padding: 64px 24px 84px;
       }
 
       #how,
       #topics {
-        padding-left: 28px;
-        padding-right: 28px;
+        padding-top: 84px;
+        padding-bottom: 92px;
+      }
+
+      .how-inner h2,
+      .topics-inner h2 {
+        font-size: 36px;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        margin-top: 56px;
+      }
+
+      .step-title {
+        margin-top: 20px;
       }
     }
 
     @media (max-width: 560px) {
       nav {
-        align-items: flex-start;
-        padding: 22px 20px 0;
-      }
-
-      .nav-logo {
-        font-size: 25px;
+        padding: 18px 20px;
       }
 
       .nav-links {
-        gap: 14px;
-        padding-top: 6px;
+        gap: 22px;
       }
 
       .nav-links a {
         font-size: 13px;
       }
 
-      .hero-wrap {
-        padding: 44px 20px 56px;
-      }
-
-      .hero-left {
-        gap: 22px;
+      .hero {
+        padding: 56px 20px 0;
       }
 
       .hero-h1 {
-        font-size: 44px;
-        letter-spacing: -1.5px;
+        font-size: 40px;
+        letter-spacing: -0.012em;
       }
 
       .hero-sub {
-        font-size: 16px;
-        line-height: 1.55;
+        font-size: 17px;
+        margin-top: 16px;
       }
 
-      .hero-card {
-        border-radius: 18px;
-        padding: 20px;
-        gap: 18px;
+      .hero-actions {
+        margin-top: 28px;
+        gap: 20px;
       }
 
-      .hero-card-header {
-        gap: 14px;
+      .hero-visual {
+        padding: 48px 20px 64px;
+      }
+
+      .phone {
+        border-radius: 44px;
+        border-width: 8px;
+      }
+
+      .screen {
+        padding: 24px 18px 112px;
+      }
+
+      .app-greeting {
+        font-size: 25px;
+      }
+
+      .day {
+        width: 36px;
       }
 
       .day-num {
-        width: 32px;
-        height: 32px;
-        border-radius: 10px;
+        width: 34px;
+        height: 34px;
+        border-radius: 17px;
         font-size: 13px;
       }
 
-      .day-lbl {
-        font-size: 9px;
-      }
-
-      .briefing-box {
-        padding: 16px;
-      }
-
-      .briefing-hl {
-        font-size: 15px;
-      }
-
-      .chip {
-        font-size: 12px;
-        padding: 6px 12px;
-      }
-
-      #how {
-        padding: 52px 20px 60px;
-      }
-
-      .how-inner>h2,
-      .topics-inner>h2 {
-        font-size: 34px;
-        letter-spacing: -1.2px;
-        margin-bottom: 34px;
-      }
-
-      .step {
-        grid-template-columns: 48px 1fr;
-        gap: 18px;
-        padding: 28px 0;
-      }
-
-      .step-ord {
-        font-size: 38px;
-        letter-spacing: -2px;
-      }
-
-      .step-title {
-        font-size: 19px;
-      }
-
-      .step-desc {
-        font-size: 14px;
-        line-height: 1.6;
-      }
-
+      #how,
       #topics {
-        padding: 56px 20px 72px;
+        padding: 68px 20px 76px;
+      }
+
+      .how-inner h2,
+      .topics-inner h2 {
+        font-size: 30px;
       }
 
       .tgrid {
-        gap: 8px;
+        margin-top: 40px;
+        gap: 10px;
       }
 
       .tchip {
-        font-size: 13px;
-        padding: 10px 15px;
+        height: 40px;
+        padding: 0 16px;
+        font-size: 14px;
       }
 
-      footer {
-        align-items: flex-start;
+      .footer-inner {
         flex-direction: column;
-        padding: 28px 20px;
-      }
-
-      .footer-links {
-        gap: 18px;
-      }
-    }
-
-    @media (max-width: 380px) {
-      .hero-h1 {
-        font-size: 38px;
-      }
-
-      .hero-card {
-        padding: 16px;
-      }
-
-      .day-num {
-        width: 28px;
-        height: 28px;
-        border-radius: 9px;
-      }
-
-      .hero-card-date {
-        display: none;
+        align-items: flex-start;
+        gap: 14px;
       }
     }
   </style>
@@ -590,44 +681,84 @@
   </nav>
 
   <!-- HERO -->
-  <div class="hero-wrap">
-    <div class="hero-left">
-      <h1 class="hero-h1">
-        News that<br>
-        actually<br>
-        <span class="accent">matters.</span>
-      </h1>
-      <p class="hero-sub">
-        Presso reads sources across the web every morning and delivers a focused briefing as audio or text, tailored to
-        what you follow.
-      </p>
+  <section class="hero">
+    <h1 class="hero-h1">News that actually matters<span class="accent">.</span></h1>
+    <p class="hero-sub">
+      Presso reads sources across the web every morning and delivers a focused briefing as audio or text, tailored to
+      what you follow.
+    </p>
+    <div class="hero-actions">
+      <a href="#how" class="btn">How it works</a>
+      <a href="#topics" class="link-more">Explore topics</a>
     </div>
+  </section>
 
-    <div class="hero-card">
-      <div class="hero-card-header">
-        <span class="hero-card-label">Your Briefing</span>
-        <span class="hero-card-date">Week 21 · 2026</span>
+  <!-- PHONE MOCKUP OF THE APP -->
+  <div class="hero-visual">
+    <div class="phone" aria-label="Preview of the Presso app">
+      <div class="screen">
+        <div class="app-header">
+          <span class="app-greeting">Hey Lucas</span>
+          <div class="app-header-actions">
+            <span class="icon-btn" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round">
+                <rect x="3" y="5" width="18" height="16" rx="3" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+                <line x1="8" y1="3" x2="8" y2="7" />
+                <line x1="16" y1="3" x2="16" y2="7" />
+              </svg>
+            </span>
+            <span class="avatar">L</span>
+          </div>
+        </div>
+
+        <div class="week-cal">
+          <div class="day"><span class="day-lbl">M</span><span class="day-num">6</span></div>
+          <div class="day"><span class="day-lbl">T</span><span class="day-num">7</span></div>
+          <div class="day"><span class="day-lbl">W</span><span class="day-num">8</span></div>
+          <div class="day"><span class="day-lbl">T</span><span class="day-num">9</span></div>
+          <div class="day"><span class="day-lbl">F</span><span class="day-num">10</span></div>
+          <div class="day today"><span class="day-lbl">S</span><span class="day-num">11</span></div>
+          <div class="day future"><span class="day-lbl">S</span><span class="day-num">12</span></div>
+        </div>
+
+        <div class="section-date">Today</div>
+
+        <div class="written">
+          <p>The European Central Bank cut its key interest rate to 2.25 percent, its third cut this year, signalling
+            confidence that inflation is easing across the euro area.</p>
+          <p class="dimmed">Markets responded with modest gains, while savers face lower deposit returns and borrowers
+            can expect cheaper credit in the months ahead.</p>
+          <p class="dimmed">In tech, a new generation of AI assistants is reshaping how newsrooms verify sources and
+            draft coverage under deadline pressure.</p>
+        </div>
       </div>
-      <div class="week-cal">
-        <div class="day past"><span class="day-lbl">Mon</span><span class="day-num">18</span></div>
-        <div class="day past"><span class="day-lbl">Tue</span><span class="day-num">19</span></div>
-        <div class="day past"><span class="day-lbl">Wed</span><span class="day-num">20</span></div>
-        <div class="day past"><span class="day-lbl">Thu</span><span class="day-num">21</span></div>
-        <div class="day past"><span class="day-lbl">Fri</span><span class="day-num">22</span></div>
-        <div class="day today"><span class="day-lbl">Sat</span><span class="day-num">23</span></div>
-        <div class="day"><span class="day-lbl">Sun</span><span class="day-num">24</span></div>
-      </div>
-      <div class="briefing-box">
-        <span class="briefing-lbl">Top Story Today</span>
-        <p class="briefing-hl">ECB cuts key interest rate to 2.25% and what it means for savers and borrowers</p>
-      </div>
-      <div class="topic-chips">
-        <span class="chip">Country News</span>
-        <span class="chip on">Business &amp; Markets</span>
-        <span class="chip">Geopolitics &amp; World Affairs</span>
-        <span class="chip">Startups &amp; Venture</span>
-        <span class="chip">Health &amp; Medicine</span>
-        <span class="chip">Tech &amp; AI</span>
+
+      <div class="player-bar">
+        <div class="progress-track">
+          <div class="progress-fill"></div>
+        </div>
+        <div class="player-copy">
+          <span class="player-title">Your briefing</span>
+          <span class="player-time">2:14 / 6:05</span>
+        </div>
+        <div class="player-controls">
+          <span class="ctl" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M6 5h2v14H6zM20 5v14L9 12z" />
+            </svg>
+          </span>
+          <span class="ctl ctl-play" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </span>
+          <span class="ctl" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M18 5h-2v14h2zM4 5v14l11-7z" />
+            </svg>
+          </span>
+        </div>
       </div>
     </div>
   </div>
@@ -635,31 +766,26 @@
   <!-- HOW IT WORKS -->
   <section id="how">
     <div class="how-inner">
-      <h2>3 steps to your<br>perfect briefing</h2>
+      <span class="section-kicker">How it works</span>
+      <h2>Three steps to your briefing.</h2>
       <div class="steps">
         <div class="step">
           <span class="step-ord">01</span>
-          <div class="step-body">
-            <h3 class="step-title">Pick your topics</h3>
-            <p class="step-desc">Tell Presso what you care about. Country news, geopolitics, business, startups, health or tech, fully
-              customizable and adjustable at any time.</p>
-          </div>
+          <h3 class="step-title">Pick your topics</h3>
+          <p class="step-desc">Tell Presso what you care about. Country news, geopolitics, business, startups, health or
+            tech — fully customizable and adjustable at any time.</p>
         </div>
         <div class="step">
           <span class="step-ord">02</span>
-          <div class="step-body">
-            <h3 class="step-title">Presso analyzes</h3>
-            <p class="step-desc">The AI reads sources across the web, evaluates relevance and quality, and distills the
-              most important stories for your profile.</p>
-          </div>
+          <h3 class="step-title">Presso analyzes</h3>
+          <p class="step-desc">The AI reads sources across the web, evaluates relevance and quality, and distills the
+            most important stories for your profile.</p>
         </div>
         <div class="step">
           <span class="step-ord">03</span>
-          <div class="step-body">
-            <h3 class="step-title">Receive your briefing</h3>
-            <p class="step-desc">Every morning at 7 your personal briefing arrives as a 5 minute audio or a compact
-              text summary, whichever you prefer.</p>
-          </div>
+          <h3 class="step-title">Receive your briefing</h3>
+          <p class="step-desc">Every morning at 7 your personal briefing arrives as a 5 minute audio or a compact text
+            summary — whichever you prefer.</p>
         </div>
       </div>
     </div>
@@ -668,26 +794,30 @@
   <!-- TOPICS -->
   <section id="topics">
     <div class="topics-inner">
-      <h2>Everything that<br>matters to you</h2>
+      <span class="section-kicker">Topics</span>
+      <h2>Everything that matters to you.</h2>
       <div class="tgrid">
-        <span class="tchip feat">🇦🇹 Country News</span>
-        <span class="tchip feat">🌍 Geopolitics &amp; World Affairs</span>
-        <span class="tchip">💹 Business &amp; Markets</span>
-        <span class="tchip">🚀 Startups &amp; Venture</span>
-        <span class="tchip">🏥 Health &amp; Medicine</span>
-        <span class="tchip">🤖 Tech &amp; AI</span>
+        <span class="tchip">Country News</span>
+        <span class="tchip">Geopolitics &amp; World Affairs</span>
+        <span class="tchip">Business &amp; Markets</span>
+        <span class="tchip">Startups &amp; Venture</span>
+        <span class="tchip">Health &amp; Medicine</span>
+        <span class="tchip">Tech &amp; AI</span>
       </div>
+      <p class="topics-note">Follow as many as you like. Your briefing adapts.</p>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <a href="#" class="footer-logo">Presso.</a>
-    <ul class="footer-links">
-      <li><a href="privacy.html">Privacy Policy</a></li>
-      <li><a href="imprint.html">Imprint</a></li>
-    </ul>
-    <span class="footer-copy">© 2026 Presso made with ☕</span>
+    <div class="footer-inner">
+      <span class="footer-copy">© 2026 Presso made with ☕</span>
+      <ul class="footer-links">
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms</a></li>
+        <li><a href="imprint.html">Imprint</a></li>
+      </ul>
+    </div>
   </footer>
 
 </body>

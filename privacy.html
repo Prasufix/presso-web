@@ -9,215 +9,200 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #eeeae5;
-      --card-light: #f8f6f2;
+      --bg: #f3f0eb;
+      --hairline: rgba(24, 24, 24, 0.1);
       --orange: #ff8a24;
-      --black: #181818;
+      --ink: #181818;
+      --body: #494640;
       --muted: #817b74;
-      --white: #ffffff;
-      --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+      --muted-2: #9a948d;
+      --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
     }
 
     body {
       font-family: var(--font);
       background: var(--bg);
-      color: var(--black);
+      color: var(--ink);
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
     nav {
+      max-width: 1020px;
+      margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 36px 56px 0;
+      padding: 22px 24px;
     }
 
     .nav-logo {
-      font-size: 28px;
-      font-weight: 900;
-      letter-spacing: -2px;
-      color: var(--black);
+      font-size: 21px;
+      font-weight: 500;
+      letter-spacing: -0.3px;
+      color: var(--orange);
       text-decoration: none;
     }
 
     .nav-links {
       display: flex;
-      gap: 36px;
+      gap: 32px;
       list-style: none;
     }
 
     .nav-links a {
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--muted);
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: -0.1px;
+      color: var(--body);
       text-decoration: none;
       transition: color 0.2s;
     }
 
-    .nav-links a:hover { color: var(--black); }
+    .nav-links a:hover { color: var(--ink); }
 
     .page-wrap {
-      max-width: 720px;
+      max-width: 660px;
       margin: 0 auto;
-      padding: 80px 56px 120px;
+      padding: 88px 24px 130px;
     }
 
-    .page-label {
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--muted);
-      margin-bottom: 16px;
+    .page-kicker {
+      display: block;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: -0.1px;
+      color: var(--orange);
+      margin-bottom: 12px;
     }
 
     h1 {
-      font-size: 52px;
-      font-weight: 900;
-      letter-spacing: -2px;
-      line-height: 1.05;
-      margin-bottom: 16px;
+      font-size: 44px;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      line-height: 1.1;
+      margin-bottom: 12px;
     }
-
-    h1 .accent { color: var(--orange); }
 
     .last-updated {
       font-size: 14px;
-      color: var(--muted);
+      font-weight: 400;
+      color: var(--muted-2);
       margin-bottom: 56px;
     }
 
     .block {
-      border-top: 1px solid rgba(24,24,24,0.1);
-      padding: 32px 0;
+      border-top: 1px solid var(--hairline);
+      padding: 28px 0;
     }
 
     .block:last-child {
-      border-bottom: 1px solid rgba(24,24,24,0.1);
+      border-bottom: 1px solid var(--hairline);
     }
 
-    .block-label {
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
-      color: var(--muted);
-      margin-bottom: 14px;
+    .block h2 {
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 10px;
     }
 
     .block p {
-      font-size: 16px;
-      line-height: 1.75;
-      color: var(--black);
+      font-size: 15px;
+      font-weight: 400;
+      letter-spacing: -0.1px;
+      line-height: 1.65;
+      color: var(--body);
     }
 
     .block p + p {
-      margin-top: 12px;
+      margin-top: 10px;
     }
 
     .cookie-table {
       display: block;
       width: 100%;
       border-collapse: collapse;
-      margin-top: 18px;
+      margin-top: 16px;
       font-size: 14px;
-      line-height: 1.55;
+      line-height: 1.5;
       overflow-x: auto;
     }
 
     .cookie-table th,
     .cookie-table td {
-      border-top: 1px solid rgba(24,24,24,0.1);
+      border-top: 1px solid var(--hairline);
       padding: 12px 10px 12px 0;
       text-align: left;
       vertical-align: top;
+      font-weight: 400;
+      color: var(--body);
     }
 
     .cookie-table th {
-      color: var(--muted);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
+      color: var(--muted-2);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
     }
 
     a.inline {
-      color: var(--black);
+      color: var(--ink);
       text-decoration: underline;
       text-underline-offset: 3px;
+      text-decoration-color: rgba(24, 24, 24, 0.3);
+    }
+
+    a.inline:hover {
+      text-decoration-color: var(--ink);
     }
 
     footer {
-      border-top: 1px solid rgba(24,24,24,0.08);
-      padding: 32px 56px;
+      border-top: 1px solid var(--hairline);
+    }
+
+    .footer-inner {
+      max-width: 1020px;
+      margin: 0 auto;
+      padding: 22px 24px 40px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
+      gap: 20px;
       flex-wrap: wrap;
     }
 
-    .footer-logo {
-      font-size: 22px;
-      font-weight: 900;
-      letter-spacing: -2px;
-      color: var(--black);
-      text-decoration: none;
+    .footer-copy {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--muted-2);
     }
 
     .footer-links {
       display: flex;
-      gap: 28px;
+      gap: 24px;
       list-style: none;
     }
 
     .footer-links a {
-      font-size: 14px;
+      font-size: 12px;
+      font-weight: 400;
       color: var(--muted);
       text-decoration: none;
       transition: color 0.2s;
     }
 
-    .footer-links a:hover { color: var(--black); }
-
-	    .footer-copy { font-size: 13px; color: var(--muted); }
-
-    @media (max-width: 720px) {
-      nav {
-        padding: 26px 28px 0;
-      }
-
-      .nav-links {
-        gap: 20px;
-      }
-
-      .page-wrap {
-        padding: 64px 28px 88px;
-      }
-
-      h1 {
-        font-size: 44px;
-      }
-
-      footer {
-        padding: 28px;
-      }
-    }
+    .footer-links a:hover { color: var(--ink); }
 
     @media (max-width: 560px) {
       nav {
-        align-items: flex-start;
-        padding: 22px 20px 0;
-      }
-
-      .nav-logo {
-        font-size: 25px;
+        padding: 18px 20px;
       }
 
       .nav-links {
-        gap: 14px;
-        padding-top: 6px;
+        gap: 22px;
       }
 
       .nav-links a {
@@ -225,12 +210,11 @@
       }
 
       .page-wrap {
-        padding: 52px 20px 72px;
+        padding: 60px 20px 88px;
       }
 
       h1 {
-        font-size: 38px;
-        letter-spacing: -1.5px;
+        font-size: 34px;
       }
 
       .last-updated {
@@ -238,12 +222,11 @@
       }
 
       .block {
-        padding: 26px 0;
+        padding: 24px 0;
       }
 
       .block p {
-        font-size: 15px;
-        line-height: 1.65;
+        font-size: 14px;
       }
 
       .cookie-table,
@@ -264,7 +247,7 @@
       }
 
       .cookie-table tr {
-        border-top: 1px solid rgba(24,24,24,0.1);
+        border-top: 1px solid var(--hairline);
         padding: 14px 0;
       }
 
@@ -274,21 +257,17 @@
       }
 
       .cookie-table td:first-child {
-        color: var(--black);
-        font-weight: 700;
+        color: var(--ink);
+        font-weight: 600;
       }
 
-      footer {
-        align-items: flex-start;
+      .footer-inner {
         flex-direction: column;
-        padding: 28px 20px;
-      }
-
-      .footer-links {
-        gap: 18px;
+        align-items: flex-start;
+        gap: 14px;
       }
     }
-	  </style>
+  </style>
 </head>
 <body>
 
@@ -301,50 +280,61 @@
   </nav>
 
   <div class="page-wrap">
-    <p class="page-label">Legal</p>
-    <h1>Pri<span class="accent">vacy.</span></h1>
+    <span class="page-kicker">Legal</span>
+    <h1>Privacy.</h1>
     <p class="last-updated">Last updated: May 2026</p>
 
     <div class="block">
-      <p class="block-label">Who we are</p>
-      <p>Presso is an AI powered news briefing app operated from Vienna, Austria. We are responsible for the processing of your personal data as described in this policy.</p>
+      <h2>Who we are</h2>
+      <p>Presso is a personalized news briefing app operated from Vienna, Austria. We are responsible for the processing of your personal data as described in this policy.</p>
       <p>Website: <a href="https://presso.at" class="inline">presso.at</a></p>
     </div>
 
     <div class="block">
-      <p class="block-label">What data we collect</p>
-      <p>When you use Presso, we collect the data you provide directly, such as your email address when you sign up, your topic preferences, and your chosen delivery format (audio or text).</p>
-      <p>We also collect usage data to improve the product: which briefings you open, which topics you engage with, and technical information like your device type and app version. We do not sell this data to third parties.</p>
+      <h2>What data we collect</h2>
+      <p>When you use Presso, we collect account data such as your email address, user ID, display name, and, when provided by a sign-in provider, profile name or avatar URL.</p>
+      <p>We collect briefing preferences such as selected topics, selected country or region, language, local briefing time, onboarding status, notification preference, and playback preference.</p>
+      <p>We process app functionality data such as generated briefing transcripts, audio files, opened briefings, subscription entitlement status, purchase restoration status, and technical request data such as IP address, device or browser information, app version, requested URL, timestamp, and server logs.</p>
+      <p>We do not sell personal data and we do not use personal data for cross-app tracking or third-party advertising.</p>
     </div>
 
     <div class="block">
-      <p class="block-label">Why we collect it</p>
-      <p>We use your data to deliver and personalize your daily briefing, to send you the briefing at your chosen time, and to improve our AI models and content selection over time. The legal basis for this processing is your consent (Art. 6(1)(a) GDPR) and our legitimate interest in operating and improving the service (Art. 6(1)(f) GDPR).</p>
+      <h2>Why we collect it</h2>
+      <p>We use your data to create and deliver your daily briefing, authenticate your account, keep you signed in, personalize topic and country selection, provide audio playback, schedule optional local reminders, manage subscriptions, restore purchases, prevent abuse, troubleshoot errors, and provide support.</p>
+      <p>The legal basis for this processing is performance of the service you request (Art. 6(1)(b) GDPR), your consent where required (Art. 6(1)(a) GDPR), and our legitimate interest in operating, securing, and improving Presso (Art. 6(1)(f) GDPR).</p>
     </div>
 
     <div class="block">
-      <p class="block-label">How long we keep it</p>
-      <p>We retain your account data for as long as your account is active. If you delete your account, we delete your personal data within 30 days, except where we are required to retain it by law.</p>
+      <h2>AI and audio processing</h2>
+      <p>Presso does not operate its own AI model. To generate concise news briefings, Presso may send public news headlines, public article summaries, source links, selected topics, language, country or region preference, and briefing instructions to third party AI and text-to-speech providers.</p>
+      <p>We do not intentionally send your email address, payment information, or account password to AI providers. We use third party AI and speech services only to provide the briefing feature, not to build an advertising profile or track you across apps and websites.</p>
     </div>
 
     <div class="block">
-      <p class="block-label">Third party services</p>
-      <p>Presso uses a small number of third party services to operate, including cloud infrastructure and email delivery. These processors handle your data only on our instruction and under data processing agreements in line with GDPR requirements.</p>
+      <h2>How long we keep it</h2>
+      <p>We retain account data and preferences for as long as your account is active. Briefing transcripts and audio files are retained while needed to provide current and archived briefings. Technical logs are retained only as long as necessary for security, abuse prevention, troubleshooting, and legal compliance.</p>
+      <p>If you delete your account in the app, we delete your account data, preferences, saved briefings, and associated audio where technically possible, except where we are required to retain limited records by law or for payment, tax, fraud prevention, or security reasons.</p>
     </div>
 
     <div class="block">
-      <p class="block-label">Your rights</p>
+      <h2>Third party services</h2>
+      <p>Presso uses third party services to operate the app, including Supabase for authentication, database, and storage; RevenueCat and the Apple App Store or Google Play Store for subscriptions and purchase restoration; Google and Apple for optional social sign-in; Google Gemini or similar AI services for summarization; text-to-speech services for audio generation; and hosting, API, security, email, and infrastructure providers.</p>
+      <p>These providers may process personal data only as needed to provide their services, secure the app, comply with legal obligations, or support billing and subscriptions. We require appropriate safeguards from service providers where required by law.</p>
+    </div>
+
+    <div class="block">
+      <h2>Your rights</h2>
       <p>Under GDPR you have the right to access, correct, or delete your personal data at any time. You can also object to processing, request data portability, or withdraw consent where processing is based on consent. To exercise any of these rights, contact us at <a href="mailto:support@presso.at" class="inline">support@presso.at</a>.</p>
     </div>
 
     <div class="block">
-      <p class="block-label">Cookies</p>
+      <h2>Cookies</h2>
       <p>The Presso website does not set its own cookies. The current mobile app uses local device storage for login sessions and onboarding progress, but the reviewed app code does not set advertising or tracking cookies.</p>
       <p>Some hosting, security, API, authentication, payment, or infrastructure providers may process technical connection data such as IP address, device and browser information, requested URL, timestamp, and server logs to deliver the service securely.</p>
     </div>
 
     <div class="block">
-      <p class="block-label">App cookie and storage overview</p>
+      <h2>App cookie and storage overview</h2>
       <p>The following overview reflects the current implementation of the reviewed mobile app.</p>
       <table class="cookie-table">
         <thead>
@@ -371,6 +361,11 @@
             <td>Until onboarding is completed, the draft is cleared, or the app data is removed.</td>
           </tr>
           <tr>
+            <td>Notification preference storage</td>
+            <td>Stores whether daily local reminders are enabled. Notifications are optional and can be disabled in the app or system settings.</td>
+            <td>Until changed by the user, account reset, or removal of app data.</td>
+          </tr>
+          <tr>
             <td>RevenueCat purchase data</td>
             <td>Used to configure purchases, subscriptions, premium entitlement status, purchase restoration, and app user identification for billing.</td>
             <td>For as long as needed to provide and verify purchases, subscriptions, and restored entitlements.</td>
@@ -379,6 +374,11 @@
             <td>Bearer access token in API requests</td>
             <td>Sent in the Authorization header for protected app endpoints such as profile, preferences, briefings, and audio access.</td>
             <td>Only for the duration of the request on the client; server side logs may be retained for security and troubleshooting.</td>
+          </tr>
+          <tr>
+            <td>Briefing transcripts and audio</td>
+            <td>Used to provide current and archived personalized briefings in text and audio form.</td>
+            <td>For as long as needed to provide the briefing service, unless the account is deleted or deletion is required earlier.</td>
           </tr>
           <tr>
             <td>Analytics or advertising cookies</td>
@@ -395,18 +395,20 @@
     </div>
 
     <div class="block">
-      <p class="block-label">Contact</p>
+      <h2>Contact</h2>
       <p>For any questions about this privacy policy or your data, reach us at <a href="mailto:support@presso.at" class="inline">support@presso.at</a>.</p>
     </div>
   </div>
 
   <footer>
-    <a href="index.html" class="footer-logo">Presso.</a>
-    <ul class="footer-links">
-      <li><a href="privacy.html">Privacy Policy</a></li>
-      <li><a href="imprint.html">Imprint</a></li>
-    </ul>
-    <span class="footer-copy">© 2026 Presso made with ☕</span>
+    <div class="footer-inner">
+      <span class="footer-copy">© 2026 Presso made with ☕</span>
+      <ul class="footer-links">
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms</a></li>
+        <li><a href="imprint.html">Imprint</a></li>
+      </ul>
+    </div>
   </footer>
 
 </body>

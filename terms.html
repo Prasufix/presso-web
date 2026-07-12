@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/png" href="favicon-orange.png" />
-  <title>Imprint Presso.</title>
+  <title>Terms Presso.</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -82,6 +82,13 @@
       font-weight: 600;
       letter-spacing: -0.015em;
       line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .last-updated {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--muted-2);
       margin-bottom: 56px;
     }
 
@@ -106,12 +113,12 @@
       font-size: 15px;
       font-weight: 400;
       letter-spacing: -0.1px;
-      line-height: 1.6;
+      line-height: 1.65;
       color: var(--body);
     }
 
     .block p + p {
-      margin-top: 8px;
+      margin-top: 10px;
     }
 
     a.inline {
@@ -150,6 +157,7 @@
       display: flex;
       gap: 24px;
       list-style: none;
+      flex-wrap: wrap;
     }
 
     .footer-links a {
@@ -181,6 +189,9 @@
 
       h1 {
         font-size: 34px;
+      }
+
+      .last-updated {
         margin-bottom: 40px;
       }
 
@@ -212,48 +223,53 @@
 
   <div class="page-wrap">
     <span class="page-kicker">Legal</span>
-    <h1>Imprint.</h1>
+    <h1>Terms.</h1>
+    <p class="last-updated">Last updated: July 2026</p>
 
     <div class="block">
-      <h2>Project</h2>
-      <p>Presso is an AI powered news briefing project based in Vienna, Austria.</p>
+      <h2>Service</h2>
+      <p>Presso provides personalized news briefings in text and audio form. Briefings are generated from public news sources, selected topics, country or region preferences, and editorial instructions.</p>
+      <p>Presso is an informational product. It is not legal, financial, medical, investment, or emergency advice.</p>
     </div>
 
     <div class="block">
-      <h2>Operator and media owner</h2>
-      <p>Lucas Harrich<br>Presso<br>Vienna, Austria</p>
+      <h2>Accounts</h2>
+      <p>You need an account to use personalized briefing features, sync preferences, access saved briefings, and manage premium access. You are responsible for keeping your account credentials secure.</p>
+      <p>You can delete your account in the app settings. Deleting your account does not automatically cancel an active App Store or Google Play subscription.</p>
+    </div>
+
+    <div class="block">
+      <h2>Subscriptions</h2>
+      <p>Presso Premium may be offered as an auto-renewable monthly or yearly subscription. The exact price, currency, billing period, and trial terms are shown in the app purchase sheet before you confirm payment.</p>
+      <p>Subscriptions renew automatically until cancelled. Your Apple Account or Google Play account is charged at confirmation of purchase and again at renewal unless you cancel before the renewal date.</p>
+      <p>You can manage or cancel subscriptions in your App Store or Google Play account settings. Presso includes restore purchase functionality in the app.</p>
+    </div>
+
+    <div class="block">
+      <h2>Content and availability</h2>
+      <p>News availability depends on source availability, network access, backend availability, and automated processing. Briefings may contain mistakes, omissions, delays, or outdated information.</p>
+      <p>Presso may change sources, topics, features, pricing, or availability over time.</p>
+    </div>
+
+    <div class="block">
+      <h2>Acceptable use</h2>
+      <p>You may not misuse Presso, interfere with the service, attempt unauthorized access, reverse engineer backend systems, or use the service in a way that violates applicable law or third party rights.</p>
+    </div>
+
+    <div class="block">
+      <h2>Privacy</h2>
+      <p>Our handling of personal data is described in the <a href="privacy.html" class="inline">Privacy Policy</a>.</p>
     </div>
 
     <div class="block">
       <h2>Contact</h2>
-      <p>Email: <a href="mailto:support@presso.at" class="inline">support@presso.at</a></p>
-      <p>Website: <a href="https://presso.at" class="inline">presso.at</a></p>
-    </div>
-
-    <div class="block">
-      <h2>Project purpose</h2>
-      <p>Development and operation of Presso, an AI powered news briefing project that provides personalized news summaries and related digital services.</p>
-    </div>
-
-    <div class="block">
-      <h2>Basic direction</h2>
-      <p>This website presents the Presso project, its features, and related product information. It does not publish editorial news content on the website itself.</p>
-    </div>
-
-    <div class="block">
-      <h2>Register and VAT</h2>
-      <p>Presso is currently presented as a project and is not listed in the Austrian commercial register. No VAT identification number is currently available.</p>
-    </div>
-
-    <div class="block">
-      <h2>Responsible for content</h2>
-      <p>Lucas Harrich<br>Vienna, Austria</p>
+      <p>For support or legal questions, contact <a href="mailto:support@presso.at" class="inline">support@presso.at</a>.</p>
     </div>
   </div>
 
   <footer>
     <div class="footer-inner">
-      <span class="footer-copy">© 2026 Presso made with ☕</span>
+      <span class="footer-copy">© 2026 Presso</span>
       <ul class="footer-links">
         <li><a href="privacy.html">Privacy Policy</a></li>
         <li><a href="terms.html">Terms</a></li>
